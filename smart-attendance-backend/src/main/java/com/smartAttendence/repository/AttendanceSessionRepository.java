@@ -1,0 +1,19 @@
+package com.smartAttendence.repository;
+
+import com.smartAttendence.entity.AttendanceSession;
+import org.springframework.data.jpa.repository.JpaRepository;
+
+import java.time.LocalDate;
+import java.util.Optional;
+
+public interface AttendanceSessionRepository
+        extends JpaRepository<AttendanceSession, Long> {
+
+    Optional<AttendanceSession>
+    findBySubjectIdAndSectionIdAndAttendanceDateAndPeriodNumber(
+            Long subjectId,
+            Long sectionId,
+            LocalDate attendanceDate,
+            Integer periodNumber
+    );
+}
